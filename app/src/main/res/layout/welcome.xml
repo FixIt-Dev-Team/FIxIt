@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/welcome_TextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="49dp"
+        android:text="Welcome to Fixit"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome_TextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="58dp"
+        android:text="Test your PC right now!"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/welcome_TextView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/welcome_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="46dp"
+        android:text="Test"
+        app:layout_constraintBottom_toBottomOf="@+id/welcome_TextView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_TextView1" />
+
+    <TextView
+        android:id="@+id/welcome_TextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="Need another information?"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/welcome_TextView2"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_TextView2" />
+
+    <Button
+        android:id="@+id/welcome_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="Enter"
+        app:layout_constraintStart_toStartOf="@+id/welcome_test"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_test" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
