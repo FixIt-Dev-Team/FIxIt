@@ -8,7 +8,11 @@ import android.widget.Button;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class welcomeActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,9 @@ public class welcomeActivity extends AppCompatActivity {
 
         Button test = findViewById(R.id.welcome_test);
         Button enter = findViewById(R.id.welcome_enter);
+        Button logoutBtn;
+
+        mAuth = FirebaseAuth.getInstance();
 
         test.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,5 +43,18 @@ public class welcomeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 로그아웃 메서드
+     * */
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    /**
+     * 회원탈퇴 메서드
+     * */
+    private void revokeAccess() {
+        mAuth.getCurrentUser().delete();
+    }
 
 }

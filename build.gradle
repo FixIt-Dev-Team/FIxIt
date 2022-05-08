@@ -1,6 +1,12 @@
 buildscript {
+    repositories {
+        // Check that you have the following line (if not, add it):
+        google()  // Google's Maven repository
+
+    }
     dependencies {
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.gms:google-services:4.3.8'
+        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
