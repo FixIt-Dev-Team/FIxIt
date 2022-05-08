@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Fixit</string>
+    <string name="main_app_name">Fix It</string>
+    <string name="main_google_login">Login With Google Account</string>
+    <string name="logoutButton">Logout</string>
 </resources>
