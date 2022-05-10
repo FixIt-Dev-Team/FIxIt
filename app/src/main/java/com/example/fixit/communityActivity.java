@@ -3,6 +3,7 @@ package com.example.fixit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -29,15 +30,35 @@ public class communityActivity extends AppCompatActivity {
         Button next = findViewById(R.id.Next); // 다음 내용 가져오기
         ArrayList title_list = new ArrayList<contents>();// title 내용들
 
-        title_list.add(new contents("hi"));//data 추가
-        title_list.add(new contents("hello"));//data 추가
-        title_list.add(new contents("please"));//data 추가
-        title_list.add(new contents("data"));//data 추가
+        //Todo: DB로 부터 data가져오기
+        title_list.add(new contents("승현", "디자인 학과 학생", "hi"));//data 추가
+        title_list.add(new contents("승현", "찾습니다", "hi"));//data 추가
+        title_list.add(new contents("승현", "저의 부족한 디자인 실력을 보충해주세요", "hi"));//data 추가
+        title_list.add(new contents("승현", "git 알려줄사람 구합니다", "hi"));//data 추가
 
 
         list = (ListView) findViewById(R.id.list_view);
         Adapter = new listAdapter(this, title_list);
         list.setAdapter(Adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), contentActivity.class);
+
+                contents content = (contents) parent.getItemAtPosition(position);
+
+                //bundle에 넣어서 content activity에 전달
+                Bundle bundle = new Bundle();
+                bundle.putString("title", content.getTitle());
+                bundle.putString("content", content.getContent());
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+
+            }
+        });
 
 
         write.setOnClickListener(new View.OnClickListener() {

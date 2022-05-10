@@ -9,6 +9,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class postingActivity extends AppCompatActivity {
 
     @Override
@@ -26,10 +28,11 @@ public class postingActivity extends AppCompatActivity {
         Post_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String name = Post_Name.getText().toString();
+                String post_name = Post_Name.getText().toString();
                 String content = Type_Post.getText().toString();
 
                 // Todo: DB에 Post data 저장
+
 
                 Intent intent_post = new Intent(getApplicationContext(), communityActivity.class);
                 startActivity(intent_post);
