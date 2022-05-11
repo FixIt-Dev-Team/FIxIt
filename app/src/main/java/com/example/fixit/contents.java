@@ -1,14 +1,39 @@
 package com.example.fixit;
 
-public class contents {
-    String ID;
-    String title;
-    String content;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.os.Build;
 
-    public contents(String ID, String title, String content) {
+import androidx.annotation.RequiresApi;
+
+import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+
+public class contents implements Serializable {
+    String ID;
+    String imgID;
+    String title;
+    String time;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public contents(){
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        time = simpleDateFormat.format(calendar.getTime());
+
+    }
+
+    public contents(String ID,String imgID, String title) {
         this.ID = ID;
+        this.imgID = imgID;
         this.title = title;
-        this.content = content;
     }
 
     public String getID() {
@@ -27,11 +52,19 @@ public class contents {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getTime() {
+        return time;
+    }
+
+    public String getImgID() {
+        return imgID;
+    }
+
+    public void setImgID(String imgID) {
+        this.imgID = imgID;
     }
 }
