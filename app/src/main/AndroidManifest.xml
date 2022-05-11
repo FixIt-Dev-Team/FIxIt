@@ -21,9 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".communityActivity"/>
-
-
-
+        <activity android:name=".contentActivity"/>
 
     </application>
 

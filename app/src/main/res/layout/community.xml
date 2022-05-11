@@ -9,8 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:text="Community"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -21,8 +21,8 @@
         android:id="@+id/Write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
         android:text="Write"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +31,8 @@
         android:id="@+id/list_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginBottom="86dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="85dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
