@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,9 +30,12 @@ import java.util.ArrayList;
 
 public class communityActivity extends AppCompatActivity {
     listAdapter Adapter = null;
-    ListView list = null;
+    RecyclerView list = null;
     int list_added = 0;
     int current_start= 0;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<contents> arrayList;
 
 
     ArrayList title_list = new ArrayList<contents>();
@@ -39,7 +44,7 @@ public class communityActivity extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    public boolean load_contents(int start, int last){
+    /*public boolean load_contents(int start, int last){
 
         if(title_list.size() < start){
             return false;
@@ -61,7 +66,7 @@ public class communityActivity extends AppCompatActivity {
 
         return true;
 
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -72,16 +77,45 @@ public class communityActivity extends AppCompatActivity {
         bar.hide();
 
         Button write = findViewById(R.id.Write);// community에 글 쓰는 기능
-        Button previous = findViewById(R.id.Previous); // 이전 내용 가져오기
-        Button next = findViewById(R.id.Next); // 다음 내용 가져오기
+        //Button previous = findViewById(R.id.Previous); // 이전 내용 가져오기
+        //Button next = findViewById(R.id.Next); // 다음 내용 가져오기
 
         //Todo: DB로 부터 data가져오기
 
-        list = (ListView) findViewById(R.id.list_view);
+        list = (RecyclerView) findViewById(R.id.recyclerView);
+        list.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getApplicationContext());
+        list.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+
         Adapter = new listAdapter(this, title_list_show);
 
-        DatabaseReference dataRef = database.getReference();
+        DatabaseReference dataRef = database.getReference("list");
 
+        dataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayList.clear();
+
+                for(DataSnapshot datasnap : snapshot.getChildren()){
+                    contents data = datasnap.getValue(contents.class);
+                    arrayList.add(0,data);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Fraglike", "error"); // 에러문 출력
+            }
+        });
+
+        adapter = new Post_CustomAdapter(arrayList
+        , getApplicationContext());
+        list.setAdapter(adapter);
+
+
+        /*
         Query myTopPostsList = dataRef.child("list")
                 .orderByChild("time").limitToLast(100);
 
@@ -124,6 +158,7 @@ public class communityActivity extends AppCompatActivity {
             }
         });
 
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -142,16 +177,17 @@ public class communityActivity extends AppCompatActivity {
 
             }
         });
-
+*/
 
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent_write = new Intent(getApplicationContext(), postingActivity.class);
                 startActivity(intent_write);
+                finish();
             }
         });
-
+        /*
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,6 +212,7 @@ public class communityActivity extends AppCompatActivity {
                 }
             }
         });
+        */
 
     }
 }
