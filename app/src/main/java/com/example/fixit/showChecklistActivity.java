@@ -32,7 +32,7 @@ public class showChecklistActivity extends AppCompatActivity {
                 break;
 
             case "4":
-                textView.setText("1. 해당 프로그램 재설치\n2. 윈도우 포멧\n3. BIOS 업데이트\n 4. 수리점 방문");
+                textView.setText("1. 해당 프로그램 재설치\n2. 윈도우 포멧\n3. BIOS 업데이트\n4. 수리점 방문");
                 break;
 
             case "5":
