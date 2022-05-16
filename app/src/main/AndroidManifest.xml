@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".welcomeActivity" android:exported="true">
-        </activity>
+        <activity android:name=".welcomeActivity"/>
+        <activity android:name=".testActivity"/>
+        <activity android:name=".showChecklistActivity"/>
         <activity android:name=".communityActivity"/>
         <activity android:name=".contentActivity"/>
 
