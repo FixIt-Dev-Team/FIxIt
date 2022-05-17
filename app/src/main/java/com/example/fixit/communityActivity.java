@@ -74,7 +74,7 @@ public class communityActivity extends AppCompatActivity {
         setContentView(R.layout.community);
 
         ActionBar bar = getSupportActionBar();
-        bar.hide();
+        //bar.hide();
 
         Button write = findViewById(R.id.Write);// community에 글 쓰는 기능
         //Button previous = findViewById(R.id.Previous); // 이전 내용 가져오기
