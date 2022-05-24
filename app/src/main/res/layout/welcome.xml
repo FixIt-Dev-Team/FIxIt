@@ -70,5 +70,24 @@
         app:layout_constraintStart_toStartOf="@+id/welcome_test"
         app:layout_constraintTop_toBottomOf="@+id/welcome_test" />
 
+    <TextView
+        android:id="@+id/welcome_TextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="Check how to replace PC components"
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="@+id/welcome_TextView3"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_TextView3" />
+
+    <Button
+        android:id="@+id/welcome_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="Go"
+        app:layout_constraintStart_toStartOf="@+id/welcome_enter"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_enter" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

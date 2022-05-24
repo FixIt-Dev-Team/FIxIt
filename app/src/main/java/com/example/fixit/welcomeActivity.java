@@ -20,7 +20,8 @@ public class welcomeActivity extends AppCompatActivity {
 
         Button test = findViewById(R.id.welcome_test);
         Button enter = findViewById(R.id.welcome_enter);
-        Button logoutBtn = findViewById((R.id.logoutButton));
+        Button logoutBtn = findViewById(R.id.logoutButton);
+        Button methodBtn = findViewById(R.id.welcome_method);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -46,6 +47,14 @@ public class welcomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 signOut();
                 finishAffinity();
+            }
+        });
+
+        methodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), fixMethodsActivity.class);
+                startActivity(intent);
             }
         });
     }

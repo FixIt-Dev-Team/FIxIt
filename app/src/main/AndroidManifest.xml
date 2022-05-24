@@ -25,6 +25,7 @@
         <activity android:name=".showChecklistActivity"/>
         <activity android:name=".communityActivity"/>
         <activity android:name=".contentActivity"/>
+        <activity android:name=".fixMethodsActivity"/>
 
     </application>
 
