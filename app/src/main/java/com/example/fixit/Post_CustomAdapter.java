@@ -8,9 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +28,12 @@ import java.util.List;
 public class Post_CustomAdapter extends RecyclerView.Adapter<Post_CustomAdapter.CustomViewHolder> {
 
     private ArrayList<contents> arrayList;
+    private ArrayList<ArrayList<String>> Img_urls = new ArrayList<>();
     private Context context;
 
     private String postID;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public Post_CustomAdapter(ArrayList<contents> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -38,9 +51,54 @@ public class Post_CustomAdapter extends RecyclerView.Adapter<Post_CustomAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        //holder.img =
 
         holder.Title.setText(arrayList.get(position).getTitle());
+
+        String ImgID = arrayList.get(position).getImgID();
+
+        DatabaseReference imgRefer = database.getReference("img");
+
+        Query myImg = imgRefer.orderByChild("imgID").equalTo(ImgID);
+
+        ArrayList<String> s_uri = new ArrayList<>();
+
+        myImg.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                imgUrl urls = snapshot.getValue(imgUrl.class);
+
+                ArrayList<String> s_uri = urls.getArr();
+
+                Img_urls.add(s_uri);
+
+                String Img_url = s_uri.get(0);
+
+                Glide.with(holder.itemView.getContext())
+                        .load(Img_url)
+                        .override(150,150)
+                        .into(holder.img);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -74,6 +132,7 @@ public class Post_CustomAdapter extends RecyclerView.Adapter<Post_CustomAdapter.
                     Bundle bundle = new Bundle();
                     bundle.putString("postID", content.getID());
                     bundle.putString("imgID",content.getImgID());
+                    //bundle.putStringArrayList("Img_URLs",);
 
                     intent.putExtras(bundle);
 

@@ -102,7 +102,7 @@ public class postingActivity extends AppCompatActivity {
         DatabaseReference databaseReference = database.getReference();
 
         ActionBar bar = getSupportActionBar();
-        bar.hide();
+        //bar.hide();
 
         EditText Post_Name = findViewById(R.id.Post_Name);
         EditText Type_Post = findViewById(R.id.Type_Post);
