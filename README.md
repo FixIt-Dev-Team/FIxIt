@@ -22,7 +22,7 @@ Third, you can watch videos about the process of replacing various computer part
 Lee ji ho - destiny3912  
 Han soo min - WGNW_gangdodan
 
-# Lisence
+# License
 
 [![License](https://img.shields.io/npm/l/mithril.svg)](https://github.com/FixIt-Dev-Team/FIxIt/blob/main/License)
 
