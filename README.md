@@ -1,12 +1,12 @@
 # FIXIT
 
-# Description
+## Description
 
 This project was conducted from 22.04.26. to 22.05.27. as a Software Engineering course in the 1st semester of the 3rd year of Gachon University.
 
 We implemented this app to provide information related to computer repair to people who can't fix it themselves when their computer breaks down, reducing expensive repair bills.
 
-# Tutorial
+## Tutorial
 
 If you log in, you can do three things
 
@@ -16,17 +16,17 @@ Second, through the community, you can get help from experts about the problems 
 
 Third, you can watch videos about the process of replacing various computer parts such as CPU and GPU
 
-# Developer
+## Developer
 
 > Nam seung hyeon - namsh1125  
 Lee ji ho - destiny3912  
 Han soo min - WGNW_gangdodan
 
-# License
+## License
 
 [![License](https://img.shields.io/npm/l/mithril.svg)](https://github.com/FixIt-Dev-Team/FIxIt/blob/main/License)
 
-# Reengineering
+## Reengineering
 
 Android - 
 
